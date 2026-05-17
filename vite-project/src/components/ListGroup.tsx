@@ -1,8 +1,11 @@
 import { MouseEvent, useState } from "react";
 
-function ListGroup() {
-  let items = ["New york", "Delhi", "India", "Patna"];
+interface Props {
+  items: string[];
+  heading: string;
+}
 
+function ListGroup({ items, heading }: Props) {
   // Hook
   const [selectedIndex, setSelectedIndex] = useState(-1);
 

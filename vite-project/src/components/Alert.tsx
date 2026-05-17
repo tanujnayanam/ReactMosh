@@ -1,5 +1,3 @@
-import { ReactDOM } from "react";
-
 interface Props {
   children: string;
 }

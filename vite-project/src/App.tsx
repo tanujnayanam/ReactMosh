@@ -1,14 +1,18 @@
+import { useState } from "react";
 import Messages from "./Message";
 import Alert from "./components/Alert";
 import Button from "./components/Button";
 import LG from "./components/ListGroup";
 
 function App() {
-  const click = () => console.log("clciked");
+  const [setAlert, setAlertVisibility] = useState(false);
 
   return (
     <div>
-      <Button color="danger" handleClick={click}>
+      {setAlert && (
+        <Alert onClose={() => setAlertVisibility(false)}>My Alert</Alert>
+      )}
+      <Button color="danger" handleClick={() => setAlertVisibility(true)}>
         My Button
       </Button>
     </div>

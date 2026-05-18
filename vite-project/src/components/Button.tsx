@@ -1,20 +1,22 @@
-import { ReactDOM, ReactNode } from "react";
+import Alert from "./Alert";
 
 interface Props {
-  children: ReactNode;
+  children: string;
   handleClick: () => void;
   color?: string;
 }
 
 const Button = ({ children, handleClick, color = "primary" }: Props) => {
   return (
-    <button
-      type="button"
-      className={"btn btn-" + color}
-      onClick={() => console.log("Clicked")}
-    >
-      {children}
-    </button>
+    <>
+      <button
+        type="button"
+        className={"btn btn-" + color}
+        onClick={handleClick}
+      >
+        {children}
+      </button>
+    </>
   );
 };
 

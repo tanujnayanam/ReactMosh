@@ -4,6 +4,7 @@ import Alert from "./components/Alert";
 import Button from "./components/Button";
 import LG from "./components/ListGroup";
 import ListGroup from "./components/ListGroup";
+import "./App.css";
 
 function App() {
   const [setAlert, setAlertVisibility] = useState(false);

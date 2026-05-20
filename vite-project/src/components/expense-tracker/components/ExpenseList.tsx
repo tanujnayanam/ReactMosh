@@ -15,10 +15,12 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
   return (
     <table>
       <thead>
-        <th>Description</th>
-        <th>Amount</th>
-        <th>Category</th>
-        <th></th>
+        <tr>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Category</th>
+          <th></th>
+        </tr>
       </thead>
       <tbody>
         {expenses.map((expense) => (

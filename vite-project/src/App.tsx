@@ -11,6 +11,15 @@ function App() {
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
+  const handleDelete = (user: User) => {
+    const originalUsers = [...users];
+    setUsers(users.filter((u) => u.id !== user.id));
+    axios
+      .delete("https://jsonplaceholder.typicode.com/users/" + user.id)
+      .catch((err) => setError(err.message));
+    setUsers(originalUsers);
+  };
+
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
@@ -35,8 +44,17 @@ function App() {
       {error && <p className="text-danger">{error}</p>}
       <div>
         <ul>
-          {users.map((u) => (
-            <li key={u.id}>{u.name}</li>
+          {users.map((user) => (
+            <li key={user.id}>
+              {user.name}{" "}
+              <button
+                className="btn btn-outline-danger"
+                onClick={() => handleDelete(user)}
+              >
+                {" "}
+                Delete
+              </button>
+            </li>
           ))}
         </ul>
       </div>

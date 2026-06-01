@@ -20,6 +20,20 @@ function App() {
     setUsers(originalUsers);
   };
 
+  const addUser = () => {
+    const newUser = { id: 100, name: "Hello User" };
+    const originalUsers = [...users];
+    setUsers([...users, newUser]);
+
+    axios
+      .post("https://jsonplaceholder.typicode.com/users/", newUser)
+      .then((user) => [...users, user])
+      .catch((err) => {
+        setError(err.message);
+        setUsers(originalUsers);
+      });
+  };
+
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
@@ -43,6 +57,7 @@ function App() {
       {isLoading && <div className="spinner-border" />}
       {error && <p className="text-danger">{error}</p>}
       <div>
+        <button onClick={addUser}>AddUser</button>
         <ul>
           {users.map((user) => (
             <li key={user.id}>
